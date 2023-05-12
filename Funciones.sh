@@ -8,11 +8,11 @@ function vt_init(){
 while true
 do
     if [ -f "$archivo_oculto" ]; then
-    echo "Se encontró el archivo oculto: $archivo_oculto"; exit 1
+    toilet -f future 'OK'; sleep 2; exit 1
     # Regresar con un código de salida no cero para indicar que no se encontró el archivo
     # Agrega aquí el código que deseas ejecutar si se encuentra el archivo oculto
     else
-    vt_init
+    toilet -f future 'Enter a valid API key'; sleep 3; clear; vt_init
     # Agrega aquí el código que deseas ejecutar si NO se encuentra el archivo oculto
     fi
 done
