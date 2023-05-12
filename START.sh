@@ -71,8 +71,8 @@ rclone config
 #https://cloudsecuritylab.dev/remote.php/dav/files/lab/  
 #
 toilet -f ivrit 'Instalando dependencias...'
-sleep 2
-apt install -y tcpdump wireshark-common
+sleep 5
+apt update && apt install -y tcpdump wireshark-common
 #
 echo "Directorios y scripts"
 mkdir -vp /home/tsec/CHECKS \
