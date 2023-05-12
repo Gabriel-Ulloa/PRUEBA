@@ -43,7 +43,7 @@ do
         cat $COWRIE_JSON |grep -i $(sed '2,$d' $IPS_FOUND) |sed '2,$d' |grep -oe $TIME_REGEX |cut -c 13-34 |sed 's/T/ /g' >$TIME_0 && sed -i 's/$/:00/' $TIME_0
         cat $COWRIE_JSON |grep -i $(sed '2,$d' $IPS_FOUND) |sed -n '$p' |grep -oe $TIME_REGEX |cut -c 13-34 |sed 's/T/ /g' >$TIME_N && sed -i 's/$/:59/' $TIME_N
         editcap -A "$(cat $TIME_0)" -B "$(cat $TIME_N)" $PCAP $SAMPLE
-        awk 'NR>1{print}' $IPS_FOUND >../$IPS_FOUND
+        awk 'NR>1{print}' $IPS_FOUND >../$IPS_FOUND  ##Agregar shasum
         cd ..
     done
 done 
