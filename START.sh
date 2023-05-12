@@ -59,7 +59,7 @@ echo "ok"
 #
 echo "Configurando VIRUSTOTAL..."
 wget https://github.com/VirusTotal/vt-cli/releases/download/0.13.0/Linux64.zip &&unzip Linux64.zip && rm Linux64.zip
-/home/tsec/SCRIPT/vt init
+/home/tsec/PRUEBA/vt init ###CAMBIAR A SCRIPT
 #969403538a4e8116b3f0b74ac57498d3b993e6bd6754165159691810cdd381c1   ###HACER UNA NUEVA
 #PONER UN CRONTAB PARA hacer el chequeo
 #
