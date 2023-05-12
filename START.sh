@@ -63,8 +63,8 @@ wget https://github.com/VirusTotal/vt-cli/releases/download/0.13.0/Linux64.zip &
 #969403538a4e8116b3f0b74ac57498d3b993e6bd6754165159691810cdd381c1   ###HACER UNA NUEVA
 #PONER UN CRONTAB PARA hacer el chequeo
 #
-echo "Instalando rclone..."
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
+toilet -f ivrit "rclone"
 rclone config
 #rclone sync /home/tsec/CHECKS nexcloud:PRUEBA_tsec ###CAMBIALA a los crons al terminar
 #rclone mkdir nexcloud:Exito
