@@ -68,7 +68,7 @@ toilet -f ivrit "rclone"
 rclone config
 #rclone sync /home/tsec/CHECKS nexcloud:PRUEBA_tsec ###CAMBIALA a los crons al terminar
 #rclone mkdir nexcloud:Exito
-#https://cloudsecuritylab.dev/remote.php/dav/files/lab/  
+#https://cloudsecuritylab.dev/remote.php/dav/files/lab/
 #
 toilet -f ivrit 'Instalando dependencias...'
 sleep 5
