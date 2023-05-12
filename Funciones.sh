@@ -5,14 +5,23 @@ function vt_init(){
     /home/tsec/vt init
 }
 
-while true
-do
-    if [ -f "$archivo_oculto" ]; then
-    toilet -f future 'OK'; sleep 2; exit 1
-    # Regresar con un código de salida no cero para indicar que no se encontró el archivo
-    # Agrega aquí el código que deseas ejecutar si se encuentra el archivo oculto
-    else
-    toilet -f future 'Enter a valid API key'; sleep 3; clear; vt_init
-    # Agrega aquí el código que deseas ejecutar si NO se encuentra el archivo oculto
-    fi
-done
+function check_vt(){
+    while true
+        do
+            if [ -f "$archivo_oculto" ]; then
+            toilet -f future 'OK'; sleep 2
+            break         
+            # Regresar con un código de salida no cero para indicar que no se encontró el archivo
+            # Agrega aquí el código que deseas ejecutar si se encuentra el archivo oculto
+            else
+            toilet -f future 'Enter a valid API key'; sleep 3; clear; vt_init
+            # Agrega aquí el código que deseas ejecutar si NO se encuentra el archivo oculto
+            fi
+        done
+}
+#
+check_vt
+#
+echo "Chingon!!"
+echo "Ahi va..."
+
