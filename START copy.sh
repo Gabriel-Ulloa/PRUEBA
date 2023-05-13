@@ -14,23 +14,18 @@ fi
 if [ -f "/etc/systemd/system/tpot.service" ]; then
     toilet -f pagga 'Plataforma T-POT'
     if [ -f "/home/tsec/PCAP/tcpdump.pcap" ]; then
-        echo "Este script solo se ejectuta una vez despues de la instalacion"
-        sleep 3
-        exit 1
+        echo "Este script solo se ejectuta una vez despues de la instalacion"; sleep 3; exit 1
     else
         echo "Plataforma T-Pot: OK"
     fi
 else
-    echo "Este script solo funciona en la plataforma T-Pot."
-    cd ..
-    rm -r SCRIPT/
-    echo "Saliendo..."
-    sleep 3
+    echo "Este script solo funciona en la plataforma T-Pot."; cd ..; rm -r SCRIPT/; echo "Saliendo..."; sleep 3
     exit 1
 fi
 #Checar Contenedor Cowrie
-#Mini menu
-function MINI(){
+if docker ps -a | grep cowrie > /dev/null; then
+    echo "Cowrie is running."
+else
     echo "El contenedor "cowrie" no se encuentra"
     echo "Posibles causas:"
     echo "1. La instalacion de T-Pot es diferente a "STANDARD""
@@ -39,28 +34,17 @@ function MINI(){
     echo "Saliendo.."
     sleep 3
     exit 1
-}
-#
-if docker ps -a | grep cowrie > /dev/null; then
-    echo "El contenedor está en ejecución."
-else
-    MINI
 fi
 #
-#Configuraciones
-#Cambiar Hora a UTC
-CRON_DIR="/etc/crontab"
-#
-echo "Estableciendo zona horaria..."
+#Estableciendo zona horaria..."
 timedatectl set-timezone UTC
 timedatectl set-ntp true
-echo "ok"
 #
-#VIRUSTOTAL
-echo "Configurando VIRUSTOTAL..."
-wget https://github.com/VirusTotal/vt-cli/releases/download/0.13.0/Linux64.zip &&unzip Linux64.zip && rm Linux64.zip
-#
+CRON_DIR="/etc/crontab"
 vt_toml="/home/tsec/.vt.toml"
+#Configuraciones
+#Configurando VIRUSTOTAL
+wget https://github.com/VirusTotal/vt-cli/releases/download/0.13.0/Linux64.zip &&unzip Linux64.zip && rm Linux64.zip
 #
 while true
     do
@@ -72,7 +56,6 @@ while true
         fi
     done
 #d7b8d0be41b03de429347d44f5c34814003bb2584a62803cd1921fc915ee4554
-#PONER UN CRONTAB PARA hacer el chequeo
 #
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
 toilet -f ivrit "rclone"
