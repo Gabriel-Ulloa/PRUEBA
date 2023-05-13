@@ -46,15 +46,23 @@ vt_toml="/home/tsec/.vt.toml"
 #Configurando VIRUSTOTAL
 wget https://github.com/VirusTotal/vt-cli/releases/download/0.13.0/Linux64.zip &&unzip Linux64.zip && rm Linux64.zip
 #
-while true
-    do
-        if [ -f "$vt_toml" ]; then
-        toilet -f future 'OK'; sleep 2
-        break         
-        else
-        toilet -f future 'Enter a valid API key'; sleep 3; /home/tsec/vt init
-        fi
-    done
+function vt_init(){
+    /home/tsec/vt init
+}
+#
+function check_vt(){
+    while true
+        do
+            if [ -f "$vt_toml" ]; then
+            toilet -f future 'OK'; sleep 2
+            break         
+            else
+            toilet -f future 'Enter a valid API key'; sleep 3; clear; vt_init
+            fi
+        done
+}
+#
+check_vt
 #d7b8d0be41b03de429347d44f5c34814003bb2584a62803cd1921fc915ee4554
 #
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
