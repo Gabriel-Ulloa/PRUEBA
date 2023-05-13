@@ -56,10 +56,21 @@ timedatectl set-timezone UTC
 timedatectl set-ntp true
 echo "ok"
 #
-#
+#VIRUSTOTAL
 echo "Configurando VIRUSTOTAL..."
 wget https://github.com/VirusTotal/vt-cli/releases/download/0.13.0/Linux64.zip &&unzip Linux64.zip && rm Linux64.zip
-/home/tsec/PRUEBA/vt init ###CAMBIAR A SCRIPT
+#
+vt_toml="/home/tsec/.vt.toml"
+#
+while true
+    do
+        if [ -f "$vt_toml" ]; then
+        toilet -f future 'OK'; sleep 2
+        break         
+        else
+        toilet -f future 'Enter a valid API key'; sleep 3; clear; /home/tsec/vt init
+        fi
+    done
 #d7b8d0be41b03de429347d44f5c34814003bb2584a62803cd1921fc915ee4554
 #PONER UN CRONTAB PARA hacer el chequeo
 #
