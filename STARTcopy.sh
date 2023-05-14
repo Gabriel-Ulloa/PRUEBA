@@ -50,19 +50,15 @@ function vt_init(){
     /home/tsec/PRUEBA/vt init #borar PRUEBA y poner script
 }
 #
-function check_vt(){
-    while true
-        do
-            if [ -f "$vt_toml" ]; then
-            toilet -f future 'OK'; sleep 2
-            break         
-            else
-            toilet -f future 'Enter a valid API key'; sleep 3; clear; vt_init
-            fi
-        done
-}
-#
-check_vt
+while true
+    do
+        if [ -f "$vt_toml" ]; then
+        toilet -f future 'OK'; sleep 2
+        break         
+        else
+        toilet -f future 'Enter a valid API key'; sleep 3; clear; vt_init
+        fi
+    done
 #d7b8d0be41b03de429347d44f5c34814003bb2584a62803cd1921fc915ee4554
 #
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
