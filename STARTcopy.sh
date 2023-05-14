@@ -41,7 +41,7 @@ timedatectl set-timezone UTC
 timedatectl set-ntp true
 #
 CRON_DIR="/etc/crontab"
-vt_toml="/home/tsec/.vt.toml"
+vt_toml="/root/.vt.toml"
 #Configuraciones
 #Configurando VIRUSTOTAL
 wget https://github.com/VirusTotal/vt-cli/releases/download/0.13.0/Linux64.zip &&unzip Linux64.zip && rm Linux64.zip
@@ -56,7 +56,7 @@ while true
         toilet -f future 'OK'; sleep 2
         break         
         else
-        toilet -f future 'Enter a valid API key'; sleep 3; vt_init
+        toilet -f future 'Enter a valid API key'; sleep 3; clear; vt_init
         fi
     done
 #d7b8d0be41b03de429347d44f5c34814003bb2584a62803cd1921fc915ee4554
