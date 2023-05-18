@@ -48,7 +48,8 @@ do
         if [ ! -s "$file" ]; then
             echo "El archivo $file está vacío. Saliendo del bucle..."
             rm $IPS_FOUND && cat $temp_2 | sort | uniq > HASHES.txt
-            hash_vt 
+            hash_vt
+            sleep 10
             rclone sync /home/tsec/CHECKS nexcloud:PRUEBA_tsec
             exit
         fi
