@@ -66,6 +66,6 @@ do
         grep $(cat IP.txt) cowrie.json |grep .downl |grep -oe "[shasum]\+.[:]\+.[0-z]\+" |cut -c 10-74 | sort | uniq >HASH.txt
         cd ..
     done
-done 
+done
 
 #REVISAR DONDE Y COMO ACOMDAR LOS HASHES
